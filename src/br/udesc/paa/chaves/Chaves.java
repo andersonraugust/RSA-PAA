@@ -1,19 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package br.udesc.paa.chaves;
 
 import br.udesc.paa.EuclidesEstendido;
 import br.udesc.paa.MillerRabin;
 import java.math.BigInteger;
 
-/**
- *
- * @author AndersonR
- */
 public class Chaves {
         private ChavePublica chavePublica;
 	private ChavePrivada chavePrivada;
@@ -34,7 +24,11 @@ public class Chaves {
 	public static Chaves gerar(Integer lengthBitKey){
 		Chaves chave = new Chaves();
 		BigInteger p = MillerRabin.getPrimo(lengthBitKey/2);
-		BigInteger q = MillerRabin.getPrimo(lengthBitKey/2);
+                BigInteger q;
+                do {
+                    q = MillerRabin.getPrimo(lengthBitKey/2);
+                } while (p.equals(q));
+		
 		BigInteger n = p.multiply(q);
 		q = q.subtract(BigInteger.ONE);
 		p = p.subtract(BigInteger.ONE);

@@ -1,10 +1,6 @@
 package br.udesc.paa.chaves;
 import java.math.BigInteger;
 
-/**
- *
- * @author AndersonR
- */
 public class Chave {
 	protected BigInteger n;
 
